@@ -1,0 +1,36 @@
+App state pieces - reducers: 
+  ☐ Canvas objects (with floors structure)
+    ☐ Current active canvas object
+
+  ☐ Constructor objects 
+
+  ☐ Floors
+    ☐ Current selected floor
+
+
+
+Constructor:
+  ☐ show current selected item panel
+
+Floors:
+  ☐ add floor action
+  ☐ delete floor action
+  ☐ render delete floor button only in 2 or more floors
+
+
+Data controls:
+  ✔ save action @done (2016-04-26 21:23)
+  ☐ clear canvas
+
+
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Archive:
+✔ drag objects on the canvas @done (2016-04-25 23:21) @project(Canvas)
+✔ hightlight current selected item (with z-index) @done (2016-04-25 23:21) @project(Constructor)
+✔ drag and drop objects to the canvas @done (2016-04-25 23:21) @project(Constructor)
+✘ add error notifications @cancelled (2016-04-19 12:01) @project(Webpack)
+✔ render save button @done (2016-04-18 21:28) @project(Save)
+✔ initial render from saved data @done (2016-04-18 21:28) @project(Canvas)
+✔ Hightlight hovered items @done (2016-04-18 19:35) @project(Constructor)
+✔ Render items from config @done (2016-04-18 19:25) @project(Constructor)

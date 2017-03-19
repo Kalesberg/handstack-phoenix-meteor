@@ -1,0 +1,21 @@
+{
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				"*"
+			],
+			"name": "root files",
+			"path": "."
+		},
+		{
+			"name": "source files",
+			"path": "./src"
+		},
+		{
+			"name": "gulp tasks",
+			"path": "./tasks"
+		}
+	]
+}
