@@ -1,0 +1,15 @@
+#tags-container {
+  #new-tag-input {
+    width: 45%;
+    margin: 50px auto;
+  }
+
+  .tag-button {
+    margin-top: 15px;
+
+    &:hover {
+      background-color: red !important;
+      border-color: red !important;
+    }
+  }
+}

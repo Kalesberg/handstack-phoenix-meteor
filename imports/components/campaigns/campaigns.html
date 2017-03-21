@@ -1,0 +1,104 @@
+<div class="container-fluid" id="campaigns-container">
+    <div class="row" id="main-row">
+        <div class="col-md-4 col-sm-5 col-xs-6" id="campaigns-left-pane">
+            <div class="row">
+                <div class="col-sm-4 padding-0">
+                    <button ui-sref="selectg" id="new-campaign-btn" class="btn btn-block ht-60">
+                        New Text
+                    </button>
+                </div>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4 padding-0">
+                    <p ng-click="campaigns.toggleBroadcastsSort()" id="campaigns-sort-by-date" class="text-center ht-60">
+                        Sort by Date
+                        <i ng-class="campaigns.broadcastSort.createdAt === -1 ? 'fa-chevron-down' : 'fa-chevron-up'" class="fa"></i>
+                    </p>
+                </div>
+            </div>
+
+            <div ng-show="campaigns.broadcasts.length === 0" class="row" id="no-broadcasts-row">
+                <div class="col-sm-8 col-sm-push-2 text-center">
+                    <span> Start two-way text conversations by clicking the green button above </span><i class="em em-sparkling_heart"></i>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 padding-0">
+                    <div class="campaign-card" ng-repeat="broadcast in campaigns.broadcasts">
+                        <div ng-class="{'selected-card':(broadcast._id._str === campaigns.broadcastId) && !campaigns.nestedId}" ng-click="campaigns.selectCampaign(broadcast._id._str)" class="card-original-wrapper">
+                            <div class="row campaign-card-top-row">
+                                <div class="col-sm-5 col-sm-push-1">
+                                    <p class="campaign-card-group-name"> To {{ broadcast.groupName }} </p>
+                                </div>
+                                <div class="col-sm-6" style="padding-right: 0;">
+                                    <p class="text-right broadcast-date"> {{ broadcast.createdAt | date }} </p>
+                                </div>
+                            </div>
+                            <div class="row campaign-card-middle-row">
+                                <div class="col-sm-6 col-xs-10 col-xs-push-1">
+                                    <p class="message"> {{ broadcast.message | broadcastMessageFilter }} </p>
+                                </div>
+                            </div>
+                            <div class="row campaign-card-bottom-row">
+                                <div class="col-sm-3 col-sm-push-1">
+                                    <p> {{ broadcast.recipientsCount || 0 }} sent</p>
+
+                                </div>
+                                <!-- ((myValue/totalValue)*100).toFixed(2) -->
+                                <div class="col-sm-4">
+                                    <p class="text-right"> {{ broadcast.repliesCount || 0 }} replied ({{ (((broadcast.repliesCount || 0) / broadcast.recipientsCount)*100).toFixed(0) || 0 }}%) </p>
+                                </div>
+                                <div class="col-sm-4" style="padding-right:0;">
+                                    <p class="text-right"> {{ (((broadcast.undelivered || 0) / broadcast.recipientsCount)*100).toFixed(0) || 0 }}% bounced </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-repeat="thread in broadcast.broadcasts" class="nested-card row padding-0">
+                            <div ng-class="{'selected-card':thread.trackerId === campaigns.nestedId}" ng-click="campaigns.selectCampaign(broadcast._id._str, thread.trackerId)" class="nested-cards">
+                                <div style="padding-left:50px; padding-right:40px">
+                                    <hr>
+                                </div>
+                                <div class="row campaign-reply-card">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-11 col-fa-reply">
+                                        <i class="fa fa-reply" id="reply-button" aria-hidden="true"></i>&nbsp;
+                                        <span class="message"> {{ thread.message }}</span>
+                                        <span class="broadcast-date" style="float:right; padding-right: 50px;"> {{ thread.createdAt | date }} </span>
+                                    </div>
+                                </div>
+                                <div class="row campaign-card-bottom-row">
+                                    <div class="col-sm-3 col-sm-push-1 text-center">
+                                        <p style="text-align:left; padding-left:10px"> {{ thread.recipientsCount || 0 }} sent</p>
+                                    </div>
+                                    <div class="col-sm-4 text-right">
+                                        <p> {{ thread.repliesCount || 0 }} replies </p>
+                                    </div>
+                                    <div class="col-sm-4 text-right">
+                                        <p> 0 bounced </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-7 col-xs-6" id="campaigns-right-pane">
+            <div ng-show="campaigns.state.current.name === 'campaigns'" class="row" id="no-campaign-row">
+                <div class="col-sm-6 col-sm-push-3">
+                    <h3 id="campaigns-welcome-to" class="text-center" style="font-weight:300; margin-bottom:0px">Welcome to</h3>
+                    <img id="campaigns-welcome-logo" class="center-block" ng-src="/images/logo-w-title2.png">
+                    <p>
+                        Handstack helps get undivided attention from your target audience and have two-way text conversations with millions of people instantly.
+                    </p>
+                    <p>
+                        Our aim is to make your brand cut through the noise and build an unbreakable and genuine bond with your audience.
+                    </p>
+                    <button ui-sref="selectg" id="new-campaign-btn" class="btn btn-default center-block" style="height:56px; width:120px; background-color:#F1F1F1">Get Started</button>
+                </div>
+            </div>
+            <div ui-view=""></div>
+        </div>
+    </div>
+</div>

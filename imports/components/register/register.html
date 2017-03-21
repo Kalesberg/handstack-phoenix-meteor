@@ -1,0 +1,20 @@
+<div class="row" id="register-form">
+    <div id="register-container" class="col-md-4 col-md-push-4 col-sm-6 col-sm-push-3 col-xs-8 col-xs-push-2">
+
+        <div id="register-form-title">
+            <img class="center-block" ng-src="/images/logo-w-title2.png">
+        </div>
+
+        <form>
+            <fieldset class="form-group">
+                <input type="email" class="form-control" ng-model="register.email" placeholder="Enter your email">
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="password" class="form-control" ng-model="register.password" placeholder="Enter your desired password">
+            </fieldset>
+
+            <button type="submit" class="btn btn-block log-in-button" ng-click="register.register()">Create An Account</button>
+        </form>
+        <a ui-sref="login"><p class="text-center" style="color:black;">Already have an account?</p></a>
+    </div>
+</div>

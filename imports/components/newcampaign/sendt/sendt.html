@@ -1,0 +1,127 @@
+<div class="container-fluid" id="send-text-container">
+    <div class="row" id="main-row">
+        <div class="col-md-8 col-sm-7 col-xs-6" id="send-text-left-pane">
+            <div class="row" id="send-text-step-indicator">
+                <div class="col-md-4 col-sm-5 col-xs-6">
+                    <p class="text-center">
+                        SELECT A GROUP
+                    </p>
+                </div>
+                <div class="col-md-1 hidden-sm hidden-xs">
+                    <p class="text-center"> > </p>
+                </div>
+                <div class="col-md-4 col-sm-5 col-xs-6">
+                    <p class="underline-green text-center">
+                        SEND A TEXT
+                    </p>
+                </div>
+            </div>
+            <div class="row" id="send-text-message-form">
+                <div class="col-xs-12 padding-0">
+
+                    <div class="row">
+                        <div class="col-xs-5 col-xs-push-1">
+                            <p> Type your text message </p>
+                            <div id="message-textarea-container">
+                                <textarea ng-model="sendt.message"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-xs-5">
+                            <p> Copy and paste desired emojis into the chat bubble. </p>
+                            😀 😬 😁 😂 😃 😄 😅 😆 😇 😉 😊 🙂 🙃 ☺️ 😋 😌 😍 😘 😗 😙 😚 😜 😝 😛 🤑 🤓 😎 🤗 😏 😶 😐 😑 😒 🙄 🤔 😳 😞 😟 😠 😡 😔 😕 🙁 ☹️ 😣 😖 😫 😩 😤 😮 😱 😨 😰 😯 😦 😧 😢 😥 😪 😓 😭 😵 😲 🤐 😷 🤒 🤕 😴 💤 💩 😈 👿 👹 👺 💀 👻 👽 🤖 😺 😸 😹 😻 😼 😽 🙀 😿 😾 🙌 👏 👋 👍 👊 ✊ ✌️ 👌 ✋ 💪 🙏 ☝️ 👆 👇 👈 👉 🖕 🤘 🖖 ✍️ 💅 👄 👅 👂 👃 👁 👀 👤 🗣 👶 👦 👧 👨 👩 👱 👴 👵 👲 👳 👮 👷 💂 🕵 🎅 👼 👸 👰 🚶 🏃 💃 👯 👫 👬 👭 🙇 💁 🙅 🙆 🙋 🙎 🙍 💇 💆 💑 👩‍❤️‍👩 👨‍❤️‍👨 💏 👩‍❤️‍💋‍👩 👨‍❤️‍💋‍👨 👪 👨‍👩‍👧 👨‍👩‍👧‍👦 👨‍👩‍👦‍👦 👨‍👩‍👧‍👧 👩‍👩‍👦 👩‍👩‍👧 👩‍👩‍👧‍👦 👩‍👩‍👦‍👦 👩‍👩‍👧‍👧 👨‍👨‍👦 👨‍👨‍👧 👨‍👨‍👧‍👦 👨‍👨‍👦‍👦 👨‍👨‍👧‍👧 👚 👕 👖 👔 👗 👙 👘 💄 💋 👣 👠 👡 👢 👞 👟 👒 🎩 ⛑ 🎓 👑 🎒 👝 👛 👜 💼 👓 🕶 💍 🌂
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="send-text-locale-selector" style="margin-bottom: 35px;">
+                <div class="col-xs-11 padding-0 col-xs-push-1">
+                    <p> Select region to send from </p>
+                    <div class="row" id="locale-option-form">
+                        <div class="col-xs-12">
+                            <div class="row" ng-click="sendt.selectLocale(locale)" ng-repeat="locale in sendt.locales">
+                                <div class="col-sm-1">
+                                    <i class="fa fa-circle-thin fa-2x" ng-show="sendt.locale !== locale"></i>
+                                    <i class="fa fa-check-circle fa-2x" ng-show="sendt.locale === locale"></i>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p style="padding-top:4px;">
+                                        {{ locale }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="send-text-locale-selector" style="margin-bottom: 35px;">
+                <div class="col-xs-11 padding-0 col-xs-push-1">
+                    <p> Alternate region selectors: </p>
+                    <div class="row" id="locale-option-form">
+                        <div class="col-xs-12">
+                            <div class="row" ng-click="sendt.selectLocale(locale)" ng-repeat="locale in sendt.locales2">
+                                <div class="col-sm-1">
+                                    <i class="fa fa-circle-thin fa-2x" ng-show="sendt.locale !== locale"></i>
+                                    <i class="fa fa-check-circle fa-2x" ng-show="sendt.locale === locale"></i>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p style="padding-top:4px;">
+                                        {{ locale }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-5 col-xs-6" id="send-text-right-pane">
+            <div class="row">
+                <div class="col-sm-12 padding-0">
+                    <button ng-click="sendt.send()" id="send-text-send-button" ui-sref="sendt" class="btn btn-block">
+                        {{$root.DISABLE_SEND_BUTTON ? "Please wait 60 seconds":"SEND THIS TEXT"}}
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 padding-0">
+                    <button ng-click="sendt.toggleImageForm()" id="send-text-image-upload-button" class="btn btn-block">
+                        UPLOAD A NEW IMAGE
+                    </button>
+                </div>
+            </div>
+            <div class="row" id="send-text-image-select-row">
+                <form method="post" enctype="multipart/form-data" id="image-upload-form" ng-show="sendt.showImageForm">
+                    <p class="text-center">
+                        <b> Upload an image. </b>
+                    </p>
+
+                    <fieldset class="form-group">
+                        <input name="imageName" type="text" class="form-control" placeholder="image name">
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label class="btn btn-file">
+                            {{ sendt.imagePresent ? "Change image": "Find an image" }}
+                            <input ng-click="sendt.assumeChanged()" type="file" style="display: none;" name="file">
+                        </label>
+                    </fieldset>
+
+                    <button type="submit" class="btn btn-block" ng-click="sendt.uploadImage()">Upload</button>
+                </form>
+
+                <div ng-show="sendt.showImages" dir-paginate="image in sendt.images | itemsPerPage: sendt.perPage" total-items="sendt.imagesCount">
+                    <div class="clearfix" ng-if="$index % 3 == 0"></div>
+                    <div class="col-sm-4">
+                        <img ng-class="{active:$index===sendt.selectedImageIndex}" ng-src="{{image.thumb_url}}" ng-click="sendt.selectImage($index)">
+                    </div>
+                </div>
+
+                <div class="pagination-controls-container">
+                    <dir-pagination-controls on-page-change="sendt.pageChanged(newPageNumber)"></dir-pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

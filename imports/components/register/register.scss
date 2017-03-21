@@ -1,0 +1,31 @@
+#register-form {
+  margin-top: 12rem;
+
+  #register-container {
+    #register-form-title {
+      padding-bottom: 45px;
+
+      img {
+        width: 200px;
+        height: auto;
+      }
+    }
+
+    form {
+      padding-bottom: 3rem;
+
+      input {
+        background-color: white !important;
+
+      }
+
+      button {
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+
+  }
+
+}

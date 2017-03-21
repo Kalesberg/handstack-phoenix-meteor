@@ -1,0 +1,92 @@
+<div class="container-fluid" id="campaign-container">
+    <div class="row" id="campaign-top-row">
+        <!--div class="col-sm-2 campaign-top-col padding-0">
+            <p ng-click="campaign.toggleShowIgnored()" class="text-center purple-select"> Toggle Ignored </p>
+        </div-->
+        <div class="col-sm-2 campaign-top-col padding-0">
+            <p ng-click="campaign.setNeedsReplyTrue()" class="text-center purple-select"> Need to reply ({{ campaign.numberOfRepliesTrue }}) </p>
+        </div>
+        <div class="col-sm-2 border-left campaign-top-col padding-0">
+            <p ng-click="campaign.setNeedsReplyFalse()" class="text-center purple-select" style="padding-bottom:2px"> Already replied ({{ campaign.numberOfRepliesFalse }}) </p>
+        </div>
+        <div class="col-sm-4 border-left campaign-top-col" id="spacer"></div>
+        <!--div class="col-sm-2 border-left campaign-top-col padding-0">
+            <p ng-click="campaign.selectAll()" class="text-center purple-select" style="padding-bottom:2px"> Select all ({{ campaign.replies.length }}) </p>
+        </div-->
+        <div class="col-sm-4 campaign-top-col padding-0">
+            <button ng-click="campaign.prepareReply()" id="reply-to-selected-button" class="btn center-block"> Reply to selected ({{campaign.bulkReplyRecipients.length}}) </button>
+        </div>
+    </div>
+
+    <div class="row" id="reply-filter-row" ng-hide="campaign.replies.length === 0">
+        <div class="col-sm-1 padding-0" id="select-all-button">
+            <i class="fa fa-circle-thin fa-2x" ng-click="campaign.selectAll()"></i>
+        </div>
+        <div class="col-sm-8 padding-0" ng-if="!campaign.showSearch">
+            <div class="form-group">
+                <input type="text" ng-model="campaign.searchText" class="form-control search" placeholder="Filter by keywords">
+            </div>
+        </div>
+        <div class="col-sm-8 padding-0" ng-if="campaign.showSearch">
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-6 padding-0" ng-repeat="tag in campaign.tags">
+                    <div class="tag-div tag-button">
+                        <p ng-click="campaign.pushTag(tag)" class="text-center tag-content"> {{ tag.name }} </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-3">
+            <div class="row">
+                <div class="col-sm-4">
+                    <i class="tag-export text-center fa fa-search" ng-click="campaign.toggleSearch()"></i>
+                </div>
+                <div class="col-sm-4">
+                    <i class="tag-export text-center fa fa-tags" ui-sref="tags" style="text-align:right; padding-right: 30px"></i>
+                </div>
+                <div class="col-sm-4">
+                    <p class="tag-export text-center" ng-click="campaign.exportBroadcast()" style="text-align:right; padding-right: 30px"> Export </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="campaign.replies.length === 0">
+        <div class="col-sm-12 text-center" style="padding-top:200px;">
+            <span> No replies yet </span><i class="em em-grin"></i>
+        </div>
+    </div>
+
+    <div class="row reply-card" dir-paginate="reply in campaign.replies | itemsPerPage: campaign.perPage" total-items="campaign.repliesCount">
+        <div class="row">
+            <div class="col-sm-1">
+                <i class="fa fa-circle-thin fa-2x" ng-show="campaign.replyRecipients.has(reply.From) === false" ng-click="campaign.appendReply(reply)"></i>
+                <i class="fa fa-check-circle fa-2x" ng-show="campaign.replyRecipients.has(reply.From) === true" ng-click="campaign.removeReply(reply)"></i>
+            </div>
+            <div class="col-sm-11">
+                <div class="row">
+                    <div class="col-sm-11">
+                        <p class="message"> {{ reply.Body}} </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 meta-data"><b> {{ reply.contact_name }} </b></div>
+                    <div class="col-sm-2 meta-data"><p> {{ reply.From }} </p></div>
+                    <div class="col-sm-2">
+                        <ul class="list-inline">
+                            <li ng-repeat="tag in reply.tags"> {{ tag }} </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2 meta-data"><p am-time-ago="reply.createdAt">  </p></div>
+                    <div class="col-sm-2"><i class="fa fa-low-vision" ng-click="campaign.ignoreReply(reply)"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination-controls-container">
+        <dir-pagination-controls on-page-change="campaign.pageChanged(newPageNumber)"></dir-pagination-controls>
+    </div>
+</div>

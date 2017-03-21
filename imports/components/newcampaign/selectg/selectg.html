@@ -1,0 +1,167 @@
+<div class="container-fluid" id="new-campaign-container">
+    <div class="row" id="main-row">
+        <div class="col-md-8 col-sm-7 col-xs-6" id="new-campaign-left-pane">
+            <div class="row" id="new-campaign-step-indicator">
+                <div class="col-md-4 col-sm-5 col-xs-6">
+                    <p class="text-center underline-green">
+                        SELECT A GROUP
+                    </p>
+                </div>
+                <div class="col-md-1 hidden-sm hidden-xs">
+                    <p class="text-center"> > </p>
+                </div>
+                <div class="col-md-4 col-sm-5 col-xs-6">
+                    <p class="text-center">
+                        SEND A TEXT
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" id="new-campaign-groups-list">
+                <div class="col-xs-12 padding-0" id="new-campaign-groups-col">
+                    <div ng-show="selectg.groupsCount === 0" class="text-center" style="padding-top:200px;">
+                        <span>You have no groups yet. Upload your contacts to get texting.</span><i class="em em-clap"></i>
+                    </div>
+                    <div id="groups-wrapper">
+                        <div ng-class="{'selected-group-card':group._id._str  === selectg.selectedGroup._id._str}" class="group-card" ng-click="selectg.selectGroup(group)" dir-paginate="group in selectg.groups | itemsPerPage: selectg.perPage" total-items="selectg.groupsCount">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <p class="group-name"> {{ group.name }}</p>
+                                </div>
+                                <div class="col-xs-2">
+
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="row">
+                                        <div class="col-xs-4"></div>
+                                        <div class="col-xs-3 padding-0">
+                                            <p class="text-center">{{ group.contactsCount }} people</p>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <p class="text-center">{{ group.createdAt | date }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pagination-controls-container">
+                        <dir-pagination-controls on-page-change="selectg.pageChanged(newPageNumber)"></dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 col-sm-5 col-xs-6" id="new-campaign-right-pane">
+            <div class="row" id="button-upload-row">
+                <div class="col-sm-12 padding-0">
+                    <button ng-click="selectg.nextStep()" class="btn btn-block btn-success next-button" style="background-color:$green;">
+                        NEXT
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 padding-0">
+                    <p id="new-campaign-create-group-label"> Need to create a group? </p>
+                </div>
+            </div>
+            <div class="row" id="button-upload-row">
+                <div class="col-sm-6 padding-0">
+                    <button ng-click="selectg.showCsvForm()" class="btn btn-block color-dark-grey">
+                        CSV
+                    </button>
+                </div>
+                <!--div class="col-sm-4 padding-0">
+                    <button class="btn btn-block color-medium-grey">
+                        COPY/PASTE
+                    </button>
+                </div-->
+                <div class="col-sm-6 padding-0">
+                    <button ng-click="selectg.showManualForm()" class="btn btn-block color-light-grey" id="selectg-manual-button">
+                        MANUAL
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 padding-0">
+                    <div id="csv-upload-wrapper" ng-show="selectg.creatingCsvGroup">
+                        <b id="upload-csv-main-header">Upload your CSV file</b>
+                        <p id="upload-csv-secondary-header">We accept following header fields: firstName, lastName, phoneNumber, emailAddress, vanId.</p>
+                        <form method="post" enctype="multipart/form-data" id="group-csv-upload-form">
+                            <fieldset class="form-group">
+                                <label class="btn btn-block btn-default btn-file">
+                                    Select file
+                                    <input ngf-drop ngf-select
+                                           ngf-change="selectg.fileUploaded($files, $rejectedFiles)"
+                                           ngf-multiple="false" ngf-allow-dir="false" ngf-accept="'.csv'"
+                                           type="file" style="display: none;" name="file">
+                                </label>
+                                {{ selectg.fileName }}
+                            </fieldset>
+                        </form>
+
+                        <div class="row green-row">
+                            <div class="col-sm-12 padding-0">
+                                <button ng-click="selectg.goToScanCSV()" class="btn btn-block"> Next </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="show-scan-csv" ng-show="selectg.showScanCSV">
+                        <b id="upload-csv-main-header">Upload your CSV file</b>
+                        <p id="upload-csv-secondary-header">Filename: {{ selectg.fileName }}</p>
+                        <p id="people-scanned-paragraph">
+                            <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+                            &nbsp;
+                            {{ selectg.peopleScanned }} people scanned.
+                        </p>
+                        <div class="row green-row">
+                            <div class="col-sm-12 padding-0">
+                                <button ng-click="selectg.goToSetName()" class="btn btn-block"> Next </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="show-set-name" ng-show="selectg.showSetName">
+                        <b id="upload-csv-main-header">Name your group</b>
+                        <p id="upload-csv-secondary-header">Recipients will not see your group name.</p>
+                        <input ng-model="selectg.groupName" class="form-control" placeholder="Group Name">
+                        <div class="row green-row">
+                            <div class="col-sm-12 padding-0">
+                                <button ng-click="selectg.saveGroup()" class="btn btn-block"> Save </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="show-set-name" ng-show="selectg.showGroupNameManual">
+                        <b id="upload-csv-main-header">Name your group</b>
+                        <p id="upload-csv-secondary-header">Recipients will not see your group name.</p>
+                        <input ng-model="selectg.groupName" class="form-control" placeholder="Group Name">
+                        <div class="row green-row">
+                            <div class="col-sm-12 padding-0">
+                                <button ng-click="selectg.goToContactFormManual()" class="btn btn-block"> Next </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="show-set-name" ng-show="selectg.showContactFormManual">
+                        <b id="upload-csv-main-header">Add people to this group</b>
+                        <p id="upload-csv-secondary-header">.</p>
+                        <input ng-model="selectg.contactName" class="form-control" placeholder="Name">
+                        <input ng-model="selectg.contactPhone" class="form-control" placeholder="Mobile number">
+                        <input ng-model="selectg.contactEmail" class="form-control" placeholder="Email (optional)">
+                        <div class="row green-row">
+                            <div class="col-sm-6 padding-0">
+                                <button ng-click="selectg.appendManualAndContinue()" class="btn btn-block"> Add another person</button>
+                            </div>
+                            <div class="col-sm-6 padding-0">
+                                <button ng-click="selectg.saveGroupManual()" class="btn btn-block"> Save group </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

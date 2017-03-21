@@ -1,0 +1,23 @@
+#conversation-container {
+  #messages-container {
+    overflow-y: scroll;
+    height: 600px;
+    max-height: 500px;
+    margin-top: 15px;
+    .mine {
+      background-color: #9cfaff;
+    }
+
+    pre {
+      background-color: #89f188;
+    }
+  }
+
+  #continue-conversation-container {
+    margin-top: 10px;
+  }
+
+  #continue-button-container {
+    margin-top: 5px;
+  }
+}

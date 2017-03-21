@@ -1,0 +1,135 @@
+#send-text-container {
+  #main-row {
+    .fa-circle-thin {
+      color: black;
+    }
+
+    .fa-check-circle {
+      color: black;
+    }
+
+    #send-text-left-pane {
+      #send-text-step-indicator {
+        height: 120px;
+        padding-top: 2em;
+
+        p {
+          font-size: 14px;
+        }
+      }
+
+      #send-text-message-form {
+        min-height: 14em;
+
+        .col-xs-12 {
+          min-height: 14em;
+        }
+
+        p {
+          font-weight: bold;
+        }
+
+        #message-textarea-container {
+          width: 240px;
+          height: 140px;
+          border-radius: 20px !important;
+          background-color: #c6c6c6;
+
+          textarea {
+            resize: none;
+            border: none;
+            background-color: #c6c6c6;
+            outline: none;
+            margin-top: 1em;
+            height: 80%;
+            width: 180px;
+            margin-left: 10px;
+          }
+        }
+      }
+
+      #send-text-locale-selector {
+        margin-top: 20px;
+        p {
+          font-weight: bold;
+        }
+
+        #locale-option-form {
+          margin-top: 2em;
+
+          select {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    #send-text-right-pane {
+
+      #send-text-image-select-row {
+        border: .5px solid grey;
+
+        input {
+          width: 80%;
+          margin: 0 auto;
+        }
+      }
+    
+      #send-text-send-button {
+        height: 120px;
+        background-color: $green;
+        color: white;
+        border: none;
+      }
+
+      #send-text-image-upload-button {
+        height: 70px;
+        background-color: $purple;
+        color: white;
+        border: none;
+      }
+
+      #send-text-image-select-row {
+        form {
+          margin-top: 25px;
+
+          fieldset {
+            width: 100%;
+
+            .btn {
+              width: 40%;
+              margin-left: 30%;
+              background-color: $purple;
+              color: white;
+              border-radius: 24px !important;
+            }
+          }
+
+          button {
+            height: 45px;
+            //width: 98.5%;
+            padding: 0 12px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+            color: $purple;
+            border: solid 4px $purple !important;
+          }
+        }
+
+        .col-sm-4 {
+          padding: 2px;
+        }
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+
+        .active {
+          border: 3px solid mediumpurple;
+        }
+      }
+    }
+  }
+}

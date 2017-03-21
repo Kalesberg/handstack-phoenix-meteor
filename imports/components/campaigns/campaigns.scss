@@ -1,0 +1,181 @@
+#campaigns-container {
+
+  #main-row {
+    #campaigns-left-pane {
+      background-color: #F1F1F1;
+
+      #new-campaign-btn {
+        background-color: $green;
+        color: white;
+        box-shadow: 1px 1px 5px #b0b0b0;
+      }
+
+      hr {
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      #campaigns-sort-by-date {
+        height: 60px;
+        width: 100%;
+        margin-bottom: 0;
+        display: table-cell;
+        vertical-align: middle;
+
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+
+      .selected-card {
+        background: white !important;
+      }
+
+      .campaign-card {
+
+        .nested-card {
+          &:first-child {
+
+          }
+          margin-left: 0;
+          margin-right: 0;
+          hr {
+            width: 100%;
+          }
+        }
+
+        .nested-cards {
+          &:first-child {
+
+          }
+
+          //padding: 0;
+        }
+
+        min-height: 120px;
+
+        p {
+          color: darkgrey;
+        }
+
+        .message {
+          color: black;
+        }
+
+        .col-fa-reply {
+          text-align: left;
+          color: darkslateblue;
+          padding-right: 0;
+          padding-left: 25px;
+          padding-top: 8px;
+          padding-bottom: 12px;
+        }
+        
+        .campaign-card-group-name {
+          font-weight: bold;
+          color: black;
+          margin-bottom: 0;
+        }
+
+        &:first-child {
+          //padding-top: 5px;
+          //background-color: white;
+          //box-shadow: 0px 0px 0px #888888;
+        }
+
+        &:last-child {
+          border-bottom: .5px solid #d1d1d1;
+        }
+
+        &:nth-of-type(odd){
+          background: radial-gradient(#F1F1F1, #F1F1F1); /* Standard syntax */
+          box-shadow: 1px 1px 5px #b0b0b0;
+        }
+
+        &:nth-of-type(even){
+          background: radial-gradient(#F1F1F1, #F1F1F1); /* Standard syntax */
+          box-shadow: 1px 1px 5px #b0b0b0;
+        }
+
+        &:last-child {
+          padding-bottom: 30px;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        .broadcast-date {
+          color: darkgrey;
+          margin-bottom: 0;
+          text-align: right;
+          font-size: 13px;
+        }
+
+        .campaign-card-top-row {
+          padding-top: 30px;
+
+          .broadcast-name {
+            font-weight: bold;
+            margin-bottom: 0;
+          }
+
+
+        }
+
+        .campaign-card-middle-row {
+          p {
+            color: darkgrey;
+          }
+          padding-bottom: 15px;
+        }
+
+        .campaign-card-bottom-row {
+          padding-bottom: 20px;
+          font-size: 13px;
+        }
+
+        .campaign-reply-card {
+          span {
+            color: darkgrey;
+          }
+        }
+      }
+
+      #no-broadcasts-row {
+        margin-top: 10em;
+        padding-bottom: 100px;
+        height:100vh;
+      }
+
+    }
+
+    #campaigns-right-pane {
+
+      #no-campaign-row {
+        margin-top: 8em;
+
+        #campaigns-welcome-to {
+          color: grey;
+        }
+
+        #campaigns-welcome-logo {
+          width: 300px;
+          left: 30px;
+        }
+
+        .btn {
+          margin-top: 30px;
+          color: #979797;
+          background-color: #d2d2d2;
+        }
+      }
+    }
+  }
+
+}
+
+#reply-button {
+  color: $purple !important;
+}

@@ -1,0 +1,17 @@
+#footer-container {
+  background-color: $bland-grey;
+}
+
+@media (min-width:350px) and (max-width:767px) {
+  .custom-form .form-control {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+  }
+  .custom-form .form-group {
+    display: inline-block;
+    width: auto;
+    margin-bottom: 0;
+    vertical-align: middle;
+  }
+}

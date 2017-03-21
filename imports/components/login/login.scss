@@ -1,0 +1,40 @@
+#login-form {
+  margin-top: 12rem;
+
+  #login-container {
+    #login-form-title {
+      padding-bottom: 45px;
+
+      img {
+        width: 200px;
+        height: auto;
+      }
+    }
+
+    form {
+      padding-bottom: 3rem;
+
+      input {
+        background-color: white !important;
+
+      }
+
+      button {
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+
+  }
+
+}
+
+.log-in-button {
+  background-color: $green;
+  color: white;
+  &:hover {
+    background-color: $green;
+    color: white;
+  }
+}

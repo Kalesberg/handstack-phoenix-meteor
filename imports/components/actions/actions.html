@@ -1,0 +1,7 @@
+<h3 class="text-center">Action: {{ actions.actionId }} </h3>
+
+<pre> {{ actions.tracker[0] | json }} </pre>
+
+<canvas id="doughnut" class="chart chart-doughnut" chart-data="[actions.tracker[0].successes, actions.tracker[0].successes]"
+        chart-labels="actions.labels" chart-colors="actions.colors">
+</canvas>

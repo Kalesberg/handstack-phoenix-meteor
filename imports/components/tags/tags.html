@@ -1,0 +1,12 @@
+<div class="container-fluid" id="tags-container">
+    <input ng-model="tags.tagName" ng-keyup="$event.keyCode == 13 && tags.createTag()" type="text" id="new-tag-input" class="form-control" placeholder="Enter new tag and press enter">
+
+    <div dir-paginate="tag in tags.tags | itemsPerPage: tags.perPage" total-items="tags.tagsCount">
+        <div class="clearfix" ng-if="$index % 3 == 0"></div>
+        <div class="col-sm-4">
+            <button ng-click="tags.removeTag(tag._id)" class="btn btn-success btn-block tag-button">
+                {{ tag.name }}
+            </button>
+        </div>
+    </div>
+</div>

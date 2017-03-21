@@ -1,0 +1,124 @@
+#campaign-container {
+  p {
+    padding-top: 1em;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .purple-select:active {
+    color: $purple;
+  }
+
+  #reply-to-selected-button {
+    background-color: $green;
+    color: white;
+    width: 80%;
+  }
+
+  .tag-export {
+    padding-top: 8px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  button {
+    margin-top: 10px;
+    height: 2.6em;
+    border-radius: 24px !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tag-button {
+  }
+
+  .fa-circle-thin {
+    color: $green;
+    padding-left: 5px;
+    padding-top: 5px;
+  }
+
+  .fa-check-circle {
+    color: $green;
+    padding-left: 5px;
+    padding-top: 5px;
+  }
+
+  #campaign-top-row {
+    //margin-top: 5px;
+    .campaign-top-col {
+      //height: 3em;
+    }
+  }
+
+  .tag-div {
+    height: 34px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 8px;
+    .tag-content {
+      background-color: #cbced5;
+      color: white;
+      height: 100%;
+      border: 1px;
+      border-radius: 3px !important;
+      padding-top: 7px;
+    }
+
+    &:hover {
+      border: 1px solid white;
+    }
+  }
+
+  #reply-filter-row {
+    margin-top: 20px;
+
+    input {
+      font-weight: bold;
+      font-family: 'FontAwesome';
+      color: black;
+      outline: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .reply-card {
+    p {
+      color: darkgrey;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      text-decoration: none;
+      &:hover {
+        cursor: default;
+      }
+    }
+
+    b {
+      color: darkgrey;
+    }
+
+    .meta-data {
+      font-size: 12px;
+    }
+
+    .message {
+      color: black;
+      word-wrap: break-word;
+    }
+
+    .input-column {
+      margin-top: 20px;
+    }
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: thin solid $lightergrey;
+  }
+}

@@ -1,0 +1,68 @@
+<div class="container-fluid" id="conversations-container">
+    <div class="row" id="main-row">
+        <div class="col-md-4 col-sm-5 col-xs-6" id="conversations-left-pane">
+            <div class="row">
+                <div class="col-sm-4 padding-0">
+                    <button id="new-text-btn" class="btn btn-success btn-block ht-60" ng-click="conversations.setQueryActive()">
+                        Show active
+                    </button>
+                </div>
+                <div class="col-sm-4 padding-0">
+                    <button class="btn btn-warning btn-block ht-60" ng-click="conversations.setQueryInactive()"> Show inactive </button>
+                </div>
+                <div class="col-sm-4 padding-0">
+                    <button class="btn btn-danger btn-block ht-60" ng-click="conversations.setQueryAll()"> Show all </button>
+                </div>
+            </div>
+
+            <div ng-show="conversations.conversations.length === 0" class="row" id="no-conversations-row">
+                <div class="col-sm-6 col-sm-push-3">
+                    <h4> No conversations yet! </h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 padding-0">
+                    <input type="text" class="form-control" ng-model="conversations.searchString" placeholder="search">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 padding-0">
+                    <div ng-click="conversations.setConversation(conversation)" class="conversation-card" dir-paginate="conversation in conversations.conversations | itemsPerPage: conversations.perPage" total-items="conversations.conversationsCount">
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-push-2">
+                                <p class="text-center"> {{ conversation.key | messageTitleFilter }}  ({{ conversation.messages.length }}) </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pagination-controls-container">
+                        <dir-pagination-controls on-page-change="conversations.pageChanged(newPageNumber)"></dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-7 col-xs-6" id="conversations-right-pane">
+            <div ng-show="!conversations.conversation" class="row" id="no-conversation-row">
+                <div class="col-sm-6 col-sm-push-3">
+                    <h1> No Conversation Selected </h1>
+                </div>
+            </div>
+            <div ng-show="conversations.conversation" class="container-fluid" id="conversation-container">
+                <div class="row" id="messages-container" scroll-glue>
+                    <pre ng-class="{mine:message.nummedia}" ng-repeat="message in conversations.conversation.messages"> ({{message.createdat | date:'medium' }}) {{ message.nummedia ? message.contactname :'you' }} said:  {{ message.body }} </pre>
+                </div>
+                <div class="row" id="continue-conversation-container">
+                    <div class="col-xs-12 padding-0">
+                        <input type="text" class="form-control" ng-model="conversations.messageText" placeholder="message...">
+                    </div>
+                </div>
+                <div class="row" id="continue-button-container">
+                    <div class="col-xs-12 padding-0">
+                        <button ng-click="conversations.send()" class="btn btn-success btn-block padding-0"> send </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

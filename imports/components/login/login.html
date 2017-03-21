@@ -1,0 +1,20 @@
+<div class="row" id="login-form">
+    <div id="login-container" class="col-md-4 col-md-push-4 col-sm-6 col-sm-push-3 col-xs-8 col-xs-push-2">
+
+        <div id="login-form-title">
+            <img class="center-block" ng-src="/images/logo-w-title2.png">
+        </div>
+
+        <form>
+            <fieldset class="form-group">
+                <input type="email" class="form-control" ng-model="login.email" placeholder="Email address">
+            </fieldset>
+            <fieldset class="form-group">
+                <input type="password" class="form-control" ng-model="login.password" placeholder="Password">
+            </fieldset>
+
+            <button type="submit" class="btn btn-block log-in-button" ng-click="login.login()">Log In</button>
+        </form>
+        <a ui-sref="register"><p class="text-center" style="color:black;">Don't have an account yet?</p></a>
+    </div>
+</div>
