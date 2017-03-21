@@ -1,0 +1,16 @@
+{
+
+  "intercom": {
+    "secret": "unknown",
+    "allowAnonymous": "true"
+  },
+
+  "public": {
+    "intercom": {
+      "id": "unknown",
+      "allowAnonymous": "true"
+    },
+    "pythonBackendUrl": "91.218.52.83:13001"
+  }
+}
+
