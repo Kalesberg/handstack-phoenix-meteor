@@ -1,0 +1,53 @@
+// useful for forcing full-width buttons within .row > .column, no known side-effects
+.padding-0 {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.padding-right-0 {
+  padding-right: 0;
+}
+
+.ht-60 {
+  height: 60px;
+}
+
+.min-ht-100-percent {
+  min-height: 100%;
+}
+
+.ht-100-percent {
+  height: 100% !important;
+}
+
+.underline-green {
+  border-bottom: 3px solid #02C385;
+  padding-bottom: 7px;
+}
+
+.side-borders {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.border-left {
+  border-left: 1px solid #D1D4DA;
+}
+
+p { font-family: 'Roboto', san-serif; font-weight: 300; }
+span { font-family: 'Roboto', san-serif; font-weight: 300; }
+a { 
+  font-family: 'Roboto', san-serif; font-weight: 300;
+  text-decoration: none; 
+}
+h3 { font-family: 'Roboto', san-serif; font-weight: 300; }
+button { font-family: 'Roboto', san-serif; font-weight: 300; border: 0px;}
+label { font-family: 'Roboto', san-serif; font-weight: 300; }
+textarea { font-family: 'Roboto', san-serif; font-weight: 300; }
+
+
+
+::-webkit-input-placeholder { font-family: 'Roboto', san-serif; font-weight: 300; }
+::-moz-placeholder { font-family: 'Roboto', san-serif; font-weight: 300; } /* firefox 19+ */
+:-ms-input-placeholder { font-family: 'Roboto', san-serif; font-weight: 300; } /* ie */
+input:-moz-placeholder { font-family: 'Roboto', san-serif; font-weight: 300; }

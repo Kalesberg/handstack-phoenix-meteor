@@ -1,0 +1,25 @@
+$bland-grey: #F4F7F9;
+$darkgrey: #6E7495;
+$green: #02c385;
+$purple: #A8A2E1;
+$grey: #BCBFCB;
+$lightergrey: #D1D4DA;
+
+.color-purple {
+  color: $purple;
+}
+
+.color-light-grey {
+  background-color: $lightergrey;
+  color: white;
+}
+
+.color-medium-grey {
+  background-color: $grey;
+  color: white;
+}
+
+.color-dark-grey {
+  background-color: $darkgrey;
+  color: white;
+}
